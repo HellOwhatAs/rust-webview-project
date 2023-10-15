@@ -1,0 +1,549 @@
+
+<!DOCTYPE html >
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>2021年“一二·九”师生歌会统分</title>
+        <link rel="shortcut icon" href="favicon.ico">
+        <script>
+            window.onbeforeunload = function (e) {
+            e = e || window.event;
+            if (e) {
+                e.returnValue = '关闭提示';
+            }
+            return '关闭提示';
+            };
+            function addRow(x){
+                var oTable = document.getElementById(x);
+                var tBodies = oTable.tBodies;
+                var tbody = tBodies[0];
+                var tr = tbody.insertRow(tbody.rows.length);
+                for(i=0;i<12;i++){
+                    td=tr.insertCell(i).innerHTML="<div contenteditable='true'></div>";
+                }
+            };
+            function sum(arr) {
+                var s = 0;
+                arr.forEach(function(val, idx, arr) {
+                    s += val;
+                }, 0);
+                
+                return s;
+            };
+            function fn (a,b){
+        　　　　return b-a;
+            };
+            function compute(x){
+                var oTable=document.getElementById(x).tBodies[0];
+                var sc=document.getElementById(x+"_");
+                var theli=[[],[],[],[],[],[],[],[],[],[],[],[]];
+                var _tmp_;
+                var _;
+                for(i=0;i<oTable.rows.length;i++){
+                    for(j=0;j<oTable.rows[i].cells.length;j++){
+                        _tmp_=eval(oTable.rows[i].cells[j].innerText);
+                        if(isNaN(_tmp_))theli[j].push(0);
+                        else theli[j].push(_tmp_);
+                    }
+                }
+                for(i=0;i<12;i++){
+                    theli[i].sort(fn);
+                    theli[i]=sum(theli[i].slice(1,-1))/theli[i].slice(1,-1).length;
+                }
+                _=theli.concat().sort(fn);
+                for(i=0;i<12;i++){
+                    sc.rows[1].cells[i].innerHTML=theli[i].toFixed(2)+"分";
+                    _tmp_=_.indexOf(theli[i])+1;
+                    sc.rows[2].cells[i].innerHTML="第"+(_tmp_)+"名";
+                    if(_tmp_<5&&x[0]!='_')sc.rows[2].cells[i].style["background-color"]="lime";
+                    else sc.rows[2].cells[i].style["background-color"]="white";
+                }
+            }
+            function delrow(x){
+                var oTable=document.getElementById(x).tBodies[0];
+                if(oTable.rows.length>3)oTable.rows[oTable.rows.length-1].remove();
+            }
+            function keyDown(event,mm)
+            { 
+                var focus=document.activeElement; 
+                var inputs=document.getElementById(mm).getElementsByTagName("div");
+                if(!document.getElementById(mm).contains(focus)) return;
+                var event=window.event||event;
+                var key=event.keyCode; 
+                for(var i=0; i<inputs.length; i++) 
+                { 
+                    if(inputs[i]===focus) break; 
+                }
+                switch(key) 
+                { 
+                    // case 37:
+                    //     if(i>0) inputs[i-1].focus();
+                    //     break; 
+                    case 13:
+                        if(i+12 <inputs.length) inputs[i+12].focus();
+                        else inputs[(i+1)%12].focus();
+                        event.keyCode=0;
+                        event.returnValue =false;
+                        break;
+                    case 38:
+                        if(i-12>=0) inputs[i-12].focus();
+                        else if(inputs.length-(Math.ceil(i/12)*12-i+1)>0)inputs[inputs.length-(Math.ceil(i/12)*12-i+1)].focus();
+                        break; 
+                    // case 39: 
+                    //     if(i<inputs.length-1) inputs[i+1].focus(); 
+                    //     break; 
+                    case 40: 
+                        if(i+12 <inputs.length) inputs[i+12].focus();
+                        else inputs[(i+1)%12].focus();
+                        break; 
+                } 
+            } 
+        </script>
+        <style>
+            fieldset{
+                background-color: white;
+            }
+            legend{
+                background-color: wheat;
+                border: 1px solid black;
+                border-radius: 5%;
+            }
+        </style>
+    </head>
+    <body style="background-color: lightblue;">
+        <fieldset>
+        <legend>歌曲演唱得分</legend>
+        <table id="_oTable1" style="background-color:#eeeeee;" bordercolor="#aaaaaa" border="1" cellpadding="0" cellpadding="2" width="100%">
+            <thead>
+                <tr>
+                    <th>船院人文</th>
+                    <th>电院</th>
+                    <th>外空文体马</th>
+                    <th>致远</th>
+                    <th>自科联盟</th>
+                    <th>设计</th>
+                    <th>安泰法学院</th>
+                    <th>机动</th>
+                    <th>巴院密院媒传农生</th>
+                    <th>材智生国</th>
+                    <th>数物李所教育</th>
+                    <th>医学院</th>
+                </tr>
+            </thead>
+            <tbody id="mm" onkeydown="keyDown(event,'mm')">
+                <tr>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                </tr>
+                <tr>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                </tr>
+                <tr>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                </tr>
+                <tr>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                </tr>
+                <tr>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                    <td><div contenteditable="true"></div></td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="button" onClick="addRow('_oTable1');" style="font-size:16px;" value="+"/>
+        <input type="button" onClick="delrow('_oTable1');" style="font-size:16px;" value="-"/>
+        <input type="button" onClick="compute('_oTable1');" style="font-size:16px;" value="确定"/>
+        <table id="_oTable1_" border="1" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>船院人文</th>
+                    <th>电院</th>
+                    <th>外空文体马</th>
+                    <th>致远</th>
+                    <th>自科联盟</th>
+                    <th>设计</th>
+                    <th>安泰法学院</th>
+                    <th>机动</th>
+                    <th>巴院密院媒传农生</th>
+                    <th>材智生国</th>
+                    <th>数物李所教育</th>
+                    <th>医学院</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                </tr>
+                <tr>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                    <td><p></p></td>
+                </tr>
+            </tbody>
+        </table>
+        </fieldset>
+        <br>
+        <fieldset>
+        <legend>学生指挥得分</legend>
+        <table id="oTable2" style="background-color:#eeeeee;" bordercolor="#aaaaaa" border="1" cellpadding="0" cellpadding="2" width="100%">
+                <thead>
+                    <tr>
+                        <th>船院人文</th>
+                        <th>电院</th>
+                        <th>外空文体马</th>
+                        <th>致远</th>
+                        <th>自科联盟</th>
+                        <th>设计</th>
+                        <th>安泰法学院</th>
+                        <th>机动</th>
+                        <th>巴院密院媒传农生</th>
+                        <th>材智生国</th>
+                        <th>数物李所教育</th>
+                        <th>医学院</th>
+                    </tr>
+                </thead>
+                <tbody id="mm2" onkeydown="keyDown(event,'mm2')">
+                    <tr>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                    </tr>
+                    <tr>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                    </tr>
+                    <tr>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                    </tr>
+                    <tr>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                    </tr>
+                    <tr>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                        <td><div contenteditable="true"></div></td>
+                    </tr>
+                </tbody>
+        </table>
+        <input type="button" onClick="addRow('oTable2');" style="font-size:16px;" value="+"/>
+        <input type="button" onClick="delrow('oTable2');" style="font-size:16px;" value="-"/>
+        <input type="button" onClick="compute('oTable2');" style="font-size:16px;" value="确定"/>
+        <table id="oTable2_" border="1" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>船院人文</th>
+                        <th>电院</th>
+                        <th>外空文体马</th>
+                        <th>致远</th>
+                        <th>自科联盟</th>
+                        <th>设计</th>
+                        <th>安泰法学院</th>
+                        <th>机动</th>
+                        <th>巴院密院媒传农生</th>
+                        <th>材智生国</th>
+                        <th>数物李所教育</th>
+                        <th>医学院</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                    </tr>
+                    <tr>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                        <td><p></p></td>
+                    </tr>
+                </tbody>
+        </table>
+        </fieldset>
+        <br>
+        <fieldset>
+        <legend>钢琴伴奏得分</legend>
+        <table id="oTable3" style="background-color:#eeeeee;" bordercolor="#aaaaaa" border="1" cellpadding="0" cellpadding="2" width="100%">
+                    <thead>
+                        <tr>
+                            <th>船院人文</th>
+                            <th>电院</th>
+                            <th>外空文体马</th>
+                            <th>致远</th>
+                            <th>自科联盟</th>
+                            <th>设计</th>
+                            <th>安泰法学院</th>
+                            <th>机动</th>
+                            <th>巴院密院媒传农生</th>
+                            <th>材智生国</th>
+                            <th>数物李所教育</th>
+                            <th>医学院</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mm3" onkeydown="keyDown(event,'mm3')">
+                        <tr>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                        </tr>
+                        <tr>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                            <td><div contenteditable="true"></div></td>
+                        </tr>
+                    </tbody>
+        </table>
+        <input type="button" onClick="addRow('oTable3');" style="font-size:16px;" value="+"/>
+        <input type="button" onClick="delrow('oTable3');" style="font-size:16px;" value="-"/>
+        <input type="button" onClick="compute('oTable3');" style="font-size:16px;" value="确定"/>
+        <table id="oTable3_" border="1" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>船院人文</th>
+                            <th>电院</th>
+                            <th>外空文体马</th>
+                            <th>致远</th>
+                            <th>自科联盟</th>
+                            <th>设计</th>
+                            <th>安泰法学院</th>
+                            <th>机动</th>
+                            <th>巴院密院媒传农生</th>
+                            <th>材智生国</th>
+                            <th>数物李所教育</th>
+                            <th>医学院</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                        </tr>
+                        <tr>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                            <td><p></p></td>
+                        </tr>
+                    </tbody>
+        </table>
+        </fieldset>
+    </body>
+</html>
